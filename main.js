@@ -66,10 +66,18 @@ const buildDomString = (studentArray) => {
     domString +=  `<h1>${student.firstName} ${student.lastName}</h1>`;
     domString +=  `<img src="${student.avatar}" alt="">`;
     domString +=  `<h3>${student.catchPhrase}</h3>`;
-    domString +=  `<button class="button">Brought Pie!</button>`;
+    domString +=  `<button class="card-button">Brought Pie!</button>`;
     domString += `</div>`;
   });
   printToDom(domString, "card-holder");
 };
 
 buildDomString(students);
+
+const allTheButtons = document.getElementsByClassName("card-button");
+console.log(allTheButtons);
+for (let i = 0; i < allTheButtons.length; i++) {
+  allTheButtons[i].addEventListener('click', (e) => {
+    console.log(e);
+  });
+}
