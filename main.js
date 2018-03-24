@@ -72,12 +72,23 @@ const buildDomString = (studentArray) => {
   printToDom(domString, "card-holder");
 };
 
-buildDomString(students);
+const addAllEventListeners = () => {
+    const allTheButtons = document.getElementsByClassName("card-button");
 
-const allTheButtons = document.getElementsByClassName("card-button");
-console.log(allTheButtons);
-for (let i = 0; i < allTheButtons.length; i++) {
-  allTheButtons[i].addEventListener('click', (e) => {
-    console.log(e);
-  });
-}
+    for (let i = 0; i < allTheButtons.length; i++) {  //adds event listeners to all the buttons
+        allTheButtons[i].addEventListener('click', changeNameToGreen);
+    }
+};
+
+const changeNameToGreen = (event) => {
+        console.log(event);
+        const nameOfStudent = event.target.parentNode.children[0];  //traversing the DOM
+        nameOfStudent.classList.toggle("green");  //adds a new class to the H1 element
+    };
+
+const startApplication = () => {
+    buildDomString(students);  //call function to build all cards
+    addAllEventListeners();  //call function to make buttons interactive
+};
+
+startApplication();
